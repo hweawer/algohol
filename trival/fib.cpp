@@ -7,7 +7,7 @@ class Fibonacci {
     assert(n >= 0);
     if (n <= 2) return 1;
     else {
-        int array[n+1] = {};
+        int array[n+1];
         array[0] = 0;
         array[1] = 1;
         array[2] = 1;
