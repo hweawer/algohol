@@ -31,3 +31,4 @@ add_executable(open_addressed_table hash_based_algorithms/open_addressed_table.c
 add_executable(list_hash_map hash_based_algorithms/list_hash_map.cpp)
 add_executable(rabin_karp hash_based_algorithms/rabin_karp.cpp)
 add_executable(tree_traversals trees/tree_traversals.cpp)
+add_executable(binary_tree_property trees/binary_tree_property.cpp)
