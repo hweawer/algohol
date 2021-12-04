@@ -1,4 +1,4 @@
-package edu.agus.leetcode;
+package edu.agus.leetcode.easy;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

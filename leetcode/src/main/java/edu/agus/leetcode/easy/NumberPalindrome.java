@@ -1,4 +1,4 @@
-package edu.agus.leetcode;
+package edu.agus.leetcode.easy;
 
 public class NumberPalindrome {
   public boolean isPalindrome(int x) {
