@@ -1,4 +1,4 @@
-package edu.agus.leetcode.medium;
+package edu.agus.leetcode.design;
 
 class Trie {
   private final static int k = 26;
