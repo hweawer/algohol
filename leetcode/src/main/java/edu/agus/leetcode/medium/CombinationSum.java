@@ -29,9 +29,4 @@ public class CombinationSum {
         .collect(Collectors.toList()), target, new ArrayList<>());
     return result;
   }
-
-  public static void main(String[] args) {
-    CombinationSum cs = new CombinationSum();
-    System.out.println(cs.combinationSum(new int[]{2, 3, 6, 7}, 7));
-  }
 }
