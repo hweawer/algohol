@@ -1,10 +1,9 @@
 package edu.agus.leetcode.easy;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public class MaximizeSumAfterKNegotiations {
-  public static int largestSumAfterKNegations(int[] nums, int k) {
+  public int largestSumAfterKNegations(int[] nums, int k) {
     if (nums.length == 1) {
       if (k % 2 == 0) return nums[0];
       else return -nums[0];
@@ -44,9 +43,5 @@ public class MaximizeSumAfterKNegotiations {
       i++;
     }
     return result;
-  }
-
-  public static void main(String[] args) {
-    System.out.println(largestSumAfterKNegations(new int[]{-2, 5, 0, 2, -2}, 3));
   }
 }
