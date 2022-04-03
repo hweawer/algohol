@@ -1,5 +1,7 @@
 package edu.agus.leetcode.easy;
 
+import java.util.PriorityQueue;
+
 public class PerformStringShifts {
   int[] resultingShift(int[][] shift, int n) {
     int left = 0;
@@ -17,6 +19,7 @@ public class PerformStringShifts {
   }
 
   public String stringShift(String s, int[][] shift) {
+    PriorityQueue<Integer> x = new PriorityQueue<>((a, y) -> a - y);
     int[] finalShift = resultingShift(shift, s.length());
     if (finalShift[1] == 0) return s;
     if (finalShift[0] == 0) {
