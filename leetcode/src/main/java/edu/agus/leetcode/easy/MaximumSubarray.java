@@ -2,16 +2,15 @@ package edu.agus.leetcode.easy;
 
 public class MaximumSubarray {
   public int maxSubArray(int[] nums) {
-    int prevSum = 0;
-    int maxSum = 0;
-    int maxElem = nums[0];
+    int currentSubarray = nums[0];
+    int maxSubarray = nums[0];
 
-    for (int x : nums) {
-      prevSum += x;
-      if (prevSum < 0) prevSum = 0;
-      if (maxSum < prevSum) maxSum = prevSum;
-      if (x > maxElem) maxElem = x;
+    for (int i = 1; i < nums.length; i++) {
+      int num = nums[i];
+      currentSubarray = Math.max(num, currentSubarray + num);
+      maxSubarray = Math.max(maxSubarray, currentSubarray);
     }
-    return maxSum == 0 ? maxElem : maxSum;
+
+    return maxSubarray;
   }
 }
