@@ -2,6 +2,7 @@ package edu.agus.leetcode.easy;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class RansomNote {
   public boolean canConstruct(String ransomNote, String magazine) {
