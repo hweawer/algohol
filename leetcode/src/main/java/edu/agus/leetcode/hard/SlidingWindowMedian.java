@@ -59,11 +59,4 @@ public class SlidingWindowMedian {
     }
     return ans;
   }
-
-  public static void main(String[] args) {
-    SlidingWindowMedian swm = new SlidingWindowMedian();
-    int[] arr = new int[]{-2147483648, -2147483648, 2147483647, -2147483648, 1, 3, -2147483648, -100, 8, 17, 22, -2147483648, -2147483648, 2147483647, 2147483647, 2147483647, 2147483647, -2147483648, 2147483647, -2147483648};
-    int k = 6;
-    swm.medianSlidingWindow(arr, k);
-  }
 }

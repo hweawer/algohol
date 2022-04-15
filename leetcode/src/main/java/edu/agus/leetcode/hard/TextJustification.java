@@ -52,9 +52,4 @@ public class TextJustification {
     }
     return new int[]{start, count};
   }
-
-  public static void main(String[] args) {
-    TextJustification tj = new TextJustification();
-    tj.fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16);
-  }
 }
