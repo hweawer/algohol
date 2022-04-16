@@ -1,44 +1,30 @@
 package edu.agus.leetcode.medium;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 class SnapshotArray {
-  int snap = 0;
-  Map<Integer, Integer>[] snapshots;
-  Queue<int[]> current = new LinkedList();
-
+  int snapshot = 0;
+  TreeMap<Integer, Integer>[] arr;
 
   public SnapshotArray(int length) {
-    snapshots = new HashMap[length];
-    for (int i = 0; i < length; i++) {
-      snapshots[i] = new HashMap();
+    arr = new TreeMap[length];
+    for (int i = 0; i< length; i++) {
+      arr[i] = new TreeMap();
     }
   }
 
   public void set(int index, int val) {
-    current.add(new int[]{index, val});
+    TreeMap<Integer, Integer> dict = arr[index];
+    dict.put(snapshot, val);
   }
 
   public int snap() {
-    while (!current.isEmpty()) {
-      int[] entry = current.poll();
-      int index = entry[0];
-      int value = entry[1];
-      snapshots[index].put(snap, value);
-    }
-    return snap++;
+    return snapshot++;
   }
 
   public int get(int index, int snap_id) {
-    Map<Integer, Integer> dict = snapshots[index];
-    for (int i = snap_id; i >= 0; i--) {
-      if (dict.get(i) != null) {
-        return dict.get(i);
-      }
-    }
-    return 0;
+    Map.Entry<Integer, Integer> en = arr[index].floorEntry(snap_id);
+    if (en == null) return 0;
+    return en.getValue();
   }
 }

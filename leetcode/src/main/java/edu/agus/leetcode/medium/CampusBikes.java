@@ -1,34 +1,54 @@
 package edu.agus.leetcode.medium;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CampusBikes {
-  int smallest = Integer.MAX_VALUE;
-  Set<Integer> visited = new HashSet();
+  class DistanceWorkerBike implements Comparable<DistanceWorkerBike> {
+    int distance;
+    int worker;
+    int bike;
 
-  int getDistance(int[] worker, int[] bike) {
+    DistanceWorkerBike(int dist, int w, int b) {
+      this.distance = dist;
+      this.worker = w;
+      this.bike = b;
+    }
+
+    public int compareTo(DistanceWorkerBike a) {
+      int cmp = Integer.compare(this.distance, a.distance);
+      if (cmp != 0) return cmp;
+      cmp = Integer.compare(this.worker, a.worker);
+      if (cmp != 0) return cmp;
+      cmp = Integer.compare(this.bike, a.bike);
+      return cmp;
+    }
+  }
+
+  int distance(int[] worker, int[] bike) {
     return Math.abs(worker[0] - bike[0]) + Math.abs(worker[1] - bike[1]);
   }
 
-  void backtracking(int[][] workers, int[][] bikes, int index, int curr) {
-    if (index >= workers.length) {
-      smallest = Math.min(smallest, curr);
-      return;
-    }
-    if (curr >= smallest) return;
-
-    for (int i = 0; i < bikes.length; i++) {
-      if (!visited.contains(i)) {
-        visited.add(i);
-        backtracking(workers, bikes, index + 1, curr + getDistance(workers[index], bikes[i]));
-        visited.remove(i);
+  public int[] assignBikes(int[][] workers, int[][] bikes) {
+    List<DistanceWorkerBike> all = new ArrayList();
+    for (int i = 0; i < workers.length; i++) {
+      for (int j = 0; j < bikes.length; j++) {
+        int dist = distance(workers[i], bikes[j]);
+        all.add(new DistanceWorkerBike(dist, i, j));
       }
     }
-  }
-
-  public int assignBikes(int[][] workers, int[][] bikes) {
-    backtracking(workers, bikes, 0, 0);
-    return smallest;
+    Collections.sort(all);
+    Set<Integer> workersVisited = new HashSet();
+    Set<Integer> bikesVisited = new HashSet();
+    int[] res = new int[workers.length];
+    for (int i = 0; i < all.size(); i++) {
+      int worker = all.get(i).worker;
+      int bike = all.get(i).bike;
+      if (!workersVisited.contains(worker) && !bikesVisited.contains(bike)) {
+        res[worker] = bike;
+        workersVisited.add(worker);
+        bikesVisited.add(bike);
+      }
+    }
+    return res;
   }
 }
