@@ -6,8 +6,8 @@ public class AsFarFromLandAsPossible {
   static int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
 
   static class Pair {
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     Pair(int x, int y) {
       this.x = x;
